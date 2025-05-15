@@ -1,0 +1,42 @@
+<!-- Базовый шаблон сайта (base.html) -->
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>IT Career</title>
+    <!-- Подключение CSS через статические файлы Django -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <h1>IT Career</h1>
+    </header>
+
+    <!-- Боковое меню -->
+    <aside>
+        <ul>
+            <!-- Навигация (лучше использовать {% url 'name' %} вместо абсолютных путей) -->
+            <li><a href="/">Главная</a></li>
+            <li><a href="/statistics/">Общая статистика</a></li>
+            <li><a href="/demand/">Востребованность</a></li>
+            <li><a href="/geography/">География</a></li>
+            <li><a href="/skills/">Навыки</a></li>
+            <li><a href="/latest/">Последние вакансии</a></li>
+        </ul>
+    </aside>
+
+    <!-- Основное содержимое страницы -->
+    <main>
+        {% block content %}  <!-- Блок для переопределения в дочерних шаблонах -->
+        <p>Добро пожаловать на сайт!</p>  <!-- Контент по умолчанию -->
+        {% endblock %}
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer>
+        <p>Иванов Иван ИИ-123</p>
+    </footer>
+</body>
+</html>
