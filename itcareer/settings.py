@@ -1,25 +1,69 @@
-# Настройки Django для веб-приложения:
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+SECRET_KEY = 'your-secret-key'
+DEBUG = True
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
-    ...
-    'core',  # Подключено пользовательское приложение 'core'
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'core',
 ]
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+ROOT_URLCONF = 'itcareer.urls'
 
 TEMPLATES = [
     {
-        ...
-        'DIRS': [BASE_DIR / 'templates'],  # Указана папка для HTML-шаблонов
-        ...
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [BASE_DIR / 'templates'],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
     },
 ]
 
-# Настройки статических файлов (CSS, JS, изображения):
-STATIC_URL = '/static/'  # URL-префикс для статики
-STATICFILES_DIRS = [BASE_DIR / 'static']  # Папка со статическими файлами
+WSGI_APPLICATION = 'itcareer.wsgi.application'
 
-# Настройки медиа-файлов (загружаемые пользователями):
-MEDIA_URL = '/media/'  # URL-префикс для медиа
-MEDIA_ROOT = BASE_DIR / 'media'  # Папка для хранения медиа-файлов
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
-# Временно разрешены все хосты (только для разработки!)
-ALLOWED_HOSTS = ['*']  
+AUTH_PASSWORD_VALIDATORS = []
+
+LANGUAGE_CODE = 'ru-ru'
+TIME_ZONE = 'UTC'
+USE_I18N = True
+USE_TZ = True
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
