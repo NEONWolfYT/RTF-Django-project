@@ -1,20 +1,25 @@
+# Настройки Django для веб-приложения:
+
 INSTALLED_APPS = [
     ...
-    'core',
+    'core',  # Подключено пользовательское приложение 'core'
 ]
 
 TEMPLATES = [
     {
         ...
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],  # Указана папка для HTML-шаблонов
         ...
     },
 ]
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+# Настройки статических файлов (CSS, JS, изображения):
+STATIC_URL = '/static/'  # URL-префикс для статики
+STATICFILES_DIRS = [BASE_DIR / 'static']  # Папка со статическими файлами
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+# Настройки медиа-файлов (загружаемые пользователями):
+MEDIA_URL = '/media/'  # URL-префикс для медиа
+MEDIA_ROOT = BASE_DIR / 'media'  # Папка для хранения медиа-файлов
 
-ALLOWED_HOSTS = ['*']  # временно
+# Временно разрешены все хосты (только для разработки!)
+ALLOWED_HOSTS = ['*']  
