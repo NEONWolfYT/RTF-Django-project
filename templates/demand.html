@@ -1,0 +1,17 @@
+<!-- demand.html -->
+{% extends 'base.html' %} <!-- Наследование структуры из base.html -->
+{% block content %}
+<!-- Заголовок страницы, данные берутся из переменной page -->
+<h1>{{ page.title }}</h1>
+<!-- HTML-контент. |safe позволяет выводить HTML без экранирования -->
+<div>{{ page.html_content|safe }}</div>
+
+<!-- Цикл для отображения графиков. graphs передается из представления -->
+{% for graph in graphs %}
+  <div>
+    <h3>{{ graph.title }}</h3>
+    <!-- Изображение графика. URL формируется из пути к файлу -->
+    <img src="{{ graph.image.url }}" alt="{{ graph.title }}">
+  </div>
+{% endfor %}
+{% endblock %}

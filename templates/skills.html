@@ -1,0 +1,12 @@
+<!-- skills.html -->
+{% extends 'base.html' %} <!-- Шаблон для раздела "Навыки" -->
+{% block content %}
+<h1>{{ page.title }}</h1>
+<div>{{ page.html_content|safe }}</div>
+{% for graph in graphs %}
+  <div>
+    <h3>{{ graph.title }}</h3>
+    <img src="{{ graph.image.url }}" alt="{{ graph.title }}">
+  </div>
+{% endfor %}
+{% endblock %}

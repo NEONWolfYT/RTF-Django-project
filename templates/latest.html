@@ -1,0 +1,24 @@
+<!-- latest.html -->
+{% extends 'base.html' %}
+{% block content %}
+<h1>Последние вакансии</h1>
+<!-- Проверка наличия вакансий -->
+{% if vacancies %}
+  <!-- Цикл по вакансиям -->
+  {% for vacancy in vacancies %}
+    <!-- Карточка вакансии -->
+    <div style="border:1px solid #ccc; margin:10px; padding:10px;">
+      <h2>{{ vacancy.title }}</h2>
+      <p><strong>Компания:</strong> {{ vacancy.company }}</p>
+      <p><strong>Оклад:</strong> {{ vacancy.salary }}</p>
+      <p><strong>Регион:</strong> {{ vacancy.region }}</p>
+      <p><strong>Дата публикации:</strong> {{ vacancy.date_published }}</p>
+      <p><strong>Навыки:</strong> {{ vacancy.skills }}</p>
+      <!-- Описание может содержать HTML. |safe разрешает его отображение -->
+      <p><strong>Описание:</strong> {{ vacancy.description|safe }}</p>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>Нет доступных вакансий.</p> <!-- Сообщение, если данных нет -->
+{% endif %}
+{% endblock %}
